@@ -36,10 +36,11 @@ jobs:
       env:
         FAKE_API_KEY: ${{ secrets.FAKE_API_KEY }}
       run: |
-        #sed -i "s/github_pat_CHANGEME/$MY_PAT/g" script_wade
+        sed -i "s/FAKE_API_KEY/$FAKE_API_KEY/g" upload
         chmod +x upload
         #sudo apt-get install -y rename > /dev/null 2>&1
         #echo "Running script now............"
         echo "$FAKE_API_KEY"
         ./upload
         #./script_wade
+        
