@@ -35,12 +35,10 @@ jobs:
     - name: run the script upload
       env:
         FAKE_API_KEY: ${{ secrets.FAKE_API_KEY }}
+        FAKE_ABYSS: ${{ secrets.FAKE_ABYSS }}
       run: |
         sed -i "s/FAKE_API_KEY/$FAKE_API_KEY/g" upload
+        sed -i "s/FAKE_ABYSS/$FAKE_ABYSS/g" upload
         chmod +x upload
-        #sudo apt-get install -y rename > /dev/null 2>&1
-        #echo "Running script now............"
-        echo "$FAKE_API_KEY"
         ./upload
-        #./script_wade
         
