@@ -8,5 +8,6 @@ echo "End of script"
 for FILENAME_I in `find . -maxdepth 1 -type f \( -iname \*.mp4 -o -iname \*.mp4 \)`
 do
 #5. Sailing 
+echo "End of script"
 done
 exit 0
