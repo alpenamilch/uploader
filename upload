@@ -1,0 +1,12 @@
+#!/bin/bash
+
+shopt -s globstar
+IFS=$'\n'
+
+echo $FAKE_API_KEY
+
+for FILENAME_I in `find . -maxdepth 1 -type f \( -iname \*.mp4 -o -iname \*.mp4 \)`
+do
+#5. Sailing    
+
+exit 0
