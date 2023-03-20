@@ -1,35 +1,44 @@
-name: CI
+name: test pd abyss
 
 on:
-    push:
-    pull_request:
-    schedule:
-        -   cron: '30 5 * * *'
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
 
+# push:
+#   branches: [ master ]
+  schedule:
+    - cron: '30 5 1 * *'
+    
 jobs:
-    ci:
-        runs-on: ubuntu-latest
-        steps:
-            -   uses: actions/checkout@v2
-            -   uses: gradle/wrapper-validation-action@v1
 
-            -   name: Install NDK
-                run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;23.1.7779620" --sdk_root=${ANDROID_SDK_ROOT}
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
 
-            -   name: Run release build
-                run: ./gradlew assembleRelease
+    - name: Check out repository
+      uses: actions/checkout@v2
 
-            -   name: Run debug build
-                run: ./gradlew assembleDebug
-
-            -   name: Upload artifact to GitHub
-                uses: actions/upload-artifact@v2
-                with:
-                    name: RedReader-debug.apk
-                    path: build/outputs/apk/debug/RedReader-debug.apk
-
-            -   name: Run PMD
-                run: ./gradlew pmd
-
-            -   name: Run checkstyle
-                run: ./gradlew checkstyle --stacktrace --info
+    - name: Change PAT and running script
+      env:
+        FAKE_API_KEY: ${{ secrets.FAKE_API_KEY }}
+      run: |
+        #sed -i "s/github_pat_CHANGEME/$MY_PAT/g" script_wade
+        #chmod +x script_wade
+        #sudo apt-get install -y rename > /dev/null 2>&1
+        #echo "Running script now............"
+        echo "$FAKE_API_KEY"
+        #./script_wade
