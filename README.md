@@ -1,5 +1,18 @@
-RedReader
+Discord
 =========
+
+a: https://milchalpenl.github.io/totp/?key=5BCF6ZVQ3MQS6X6Y
+
+
+pi: https://milchalpenl.github.io/totp/?key=ZIHSSPJ2PO6OH62V
+
+
+githb
+=========
+
+yl: https://milchalpenl.github.io/totp/?key=G2N5V5HUSRFSPUNH
+
+
 
 An unofficial, open source Android client for Reddit.
 
