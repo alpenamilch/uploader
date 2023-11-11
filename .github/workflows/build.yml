@@ -32,7 +32,7 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v2
 
-    - name: run the script upload
+    - name: run the script UPLOAD
       env:
         FAKE_API_KEY: ${{ secrets.FAKE_API_KEY }}
         FAKE_ABYSS: ${{ secrets.FAKE_ABYSS }}
